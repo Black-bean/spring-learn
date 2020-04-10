@@ -4,9 +4,29 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <!-- property 中name 的属性和set 方法名保持一致。-->
+    <!-- 配置bean方式一：通过bean的全类名的方式,
+        class：通过反射的方式在IOC容器中创建bean,所以bean 中必须有无参的构造器
+        id:bean的名称，通过id 获取此bean,id在容器必须唯一
+     -->
+
+    <!-- 注入方式一：属性注入，即通过setter方法注入。property 中name 的属性和set 方法名保持一致。-->
     <bean  id="helloWorld" class="com.learn.spring.HelloWorld">
         <property name="name" value="Spring"/>
+    </bean>
+    <!-- 注入方式二：构造方法注入 通过 <constructor-arg> ，多个构造器存在时，可以使用 index和type 区分重载的构造器-->
+    <bean  id="car" class="com.learn.spring.Car">
+        <constructor-arg value="宝马"></constructor-arg>
+        <constructor-arg value="上海"></constructor-arg>
+        <constructor-arg value="1000"></constructor-arg>
+    </bean>
+
+    <bean  id="car2" class="com.learn.spring.Car">
+        <constructor-arg value="奔驰" index="0"></constructor-arg>
+<!--        <constructor-arg value="上海" index="1"></constructor-arg>-->
+        <constructor-arg>
+           <value><![CDATA[<<上海]]></value>  <!-- 可以使用value子节点，有特殊字符时也可以使用<![CDATA[]]> 转义-->
+        </constructor-arg>
+        <constructor-arg value="2000" index="2" type="int"></constructor-arg>
     </bean>
 
 </beans>

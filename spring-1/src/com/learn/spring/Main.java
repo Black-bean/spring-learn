@@ -27,5 +27,10 @@ public class Main {
         System.out.println(car.toString());
         Car car2 = (Car) ctx.getBean("car2");
         System.out.println(car2.toString());
+
+        //在备bean 中注入bean
+        Person person= (Person) ctx.getBean("person");
+        System.out.println(person.toString());
+
     }
 }

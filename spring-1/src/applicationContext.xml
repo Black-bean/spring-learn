@@ -29,4 +29,13 @@
         <constructor-arg value="2000" index="2" type="int"></constructor-arg>
     </bean>
 
+    <bean id ="person" class="com.learn.spring.Person">
+        <property name="name" value="张三"></property>
+        <!-- 注入bean 类型 使用 ref 进行注入，下面两种方式均可 -->
+        <property name="car" ref ="car"></property>
+<!--        <property name="car">-->
+<!--            <ref>car</ref>-->
+<!--        </property>-->
+    </bean>
+
 </beans>
